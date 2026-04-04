@@ -1,6 +1,6 @@
-package dev.faisals.springjpa.repository;
+package dev.faisals.springjpa.repositories;
 
-import dev.faisals.springjpa.model.Product;
+import dev.faisals.springjpa.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

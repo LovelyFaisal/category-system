@@ -1,7 +1,7 @@
-package dev.faisals.springjpa.service;
+package dev.faisals.springjpa.services;
 
-import dev.faisals.springjpa.model.Product;
-import dev.faisals.springjpa.repository.ProductRepo;
+import dev.faisals.springjpa.entities.Product;
+import dev.faisals.springjpa.repositories.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,8 +21,8 @@ public class ProductService {
         return repo.findById(prodId).orElse(new Product());
     }
 
-    public void addProduct(Product product) {
-        repo.save(product);
+    public Product addProduct(Product product) {
+        return repo.save(product);
     }
     public void updateProduct(Product product) {
         repo.save(product);

@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-public class ProductControler {
+public class ProductController {
 
 
     @Autowired
@@ -25,8 +25,7 @@ public class ProductControler {
     }
 
     @PostMapping("/products")
-    public void addProduct(@RequestBody Product prod) {
-        service.addProduct(prod);
+    public Product addProduct(@RequestBody Product prod) {
+        return service.addProduct(prod);
     }
-
 }
