@@ -18,7 +18,7 @@ Electronics
 ##  Features
 
 - **Optimized Database Access**: Uses JOIN FETCH to eliminate the $N+1$ select problem, fetching all categories in a single SQL query.
-- **Tree Construction:** Implements a high-efficiency Flat-to-Tree algorithm in the application layer to assemble the hierarchy.
+- **O(n) Tree Construction:** Implements a high-efficiency Flat-to-Tree algorithm in the application layer to assemble the hierarchy.
 - **Frontend Friendly:** Produces a clean, recursive JSON structure (Top-Down) ready for Tree-View components.
 
 
@@ -50,8 +50,6 @@ CREATE TABLE categories (
 - `ON DELETE CASCADE` — deleting a parent automatically deletes all its children
 - `parent_id = NULL` means the category is a root (top-level)
 
-
----
 
 ## API Response
 ```json
