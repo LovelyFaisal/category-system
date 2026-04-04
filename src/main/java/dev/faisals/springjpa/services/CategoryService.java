@@ -19,8 +19,16 @@ public class CategoryService  {
     CategoryRepo repo;
 
     public List<CategoryDTO> getFullTree() {
-        return getTree(repo.findAllWithParent());
+//        return repo.findAll();
+        List<Category> list = repo.findAll();
+
+        return getTree(list);
     }
+
+    public List<Category> getSubTree(Long targetId) {
+        return repo.findSubTree(targetId);
+    }
+
 
     public List<CategoryDTO> getTree(@NonNull List<Category> all) {
         Map<Long, CategoryDTO> map = all.stream()
@@ -35,7 +43,7 @@ public class CategoryService  {
             if (c.getParent() == null) {
                 roots.add(map.get(c.getId()));
             } else {
-                map.get(c.getParent().getId())
+                map.get(c.getParent())
                         .getChildren()
                         .add(map.get(c.getId()));
             }

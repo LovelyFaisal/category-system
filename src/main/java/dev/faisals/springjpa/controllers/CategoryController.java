@@ -3,10 +3,7 @@ import dev.faisals.springjpa.CategoryDTO.CategoryDTO;
 import dev.faisals.springjpa.entities.Category;
 import dev.faisals.springjpa.services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,6 +18,10 @@ public class CategoryController {
         return service.getFullTree();
     }
 
+    @GetMapping("/categories/{id}")
+    public List<Category> getSubTree(@PathVariable Long id) {
+        return service.getSubTree(id);
+    }
 
     @PostMapping("/categories")
     public Category addCategory(@RequestBody Category category) {
