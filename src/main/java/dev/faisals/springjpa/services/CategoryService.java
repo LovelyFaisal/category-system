@@ -5,7 +5,10 @@ import dev.faisals.springjpa.repositories.CategoryRepo;
 import dev.faisals.springjpa.entities.Category;
 import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseStatus;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,14 +22,12 @@ public class CategoryService  {
     CategoryRepo repo;
 
     public List<CategoryDTO> getFullTree() {
-//        return repo.findAll();
         List<Category> list = repo.findAll();
-
         return getTree(list);
     }
 
-    public List<Category> getSubTree(Long targetId) {
-        return repo.findSubTree(targetId);
+    public List<CategoryDTO> getSubTree(Long targetId) {
+        return getTree(repo.findSubTree(targetId));
     }
 
 

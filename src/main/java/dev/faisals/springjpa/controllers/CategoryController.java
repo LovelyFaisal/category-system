@@ -19,7 +19,7 @@ public class CategoryController {
     }
 
     @GetMapping("/categories/{id}")
-    public List<Category> getSubTree(@PathVariable Long id) {
+    public List<CategoryDTO> getSubTree(@PathVariable Long id) {
         return service.getSubTree(id);
     }
 
