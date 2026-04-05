@@ -15,7 +15,7 @@ Electronics
     └── MacBook Pro
 ```
 
-<img src="./assets/frontend.png" width="600" alt="Project Screenshot">
+<img src="./assets/frontend.png" alt="Project Screenshot">
 
 
 ##  Features
