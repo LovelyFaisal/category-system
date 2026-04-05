@@ -17,7 +17,7 @@ Electronics
 
 ##  Features
 
-- **Optimized Database Access**: Uses JOIN FETCH to eliminate the $N+1$ select problem, fetching all categories in a single SQL query.
+- **Zero N+1 Performance Trap:** Most implementations suffer from the N+1 problem by querying the database for every child. This system fetches the entire dataset in one single, flat $O(1)$ database query.
 - **$O(n)$ Tree Construction:** Implements a high-efficiency Flat-to-Tree algorithm in the application layer to assemble the hierarchy.
 - **Frontend Friendly:** Produces a clean, recursive JSON structure (Top-Down) ready for Tree-View components.
 
