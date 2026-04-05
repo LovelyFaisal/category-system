@@ -15,6 +15,9 @@ Electronics
     └── MacBook Pro
 ```
 
+<img src="./assets/frontend.png" width="600" alt="Project Screenshot">
+
+
 ##  Features
 
 - **Zero N+1 Performance Trap:** Most implementations suffer from the N+1 problem by querying the database for every child. This system fetches the entire dataset in one single, flat $O(1)$ database query.
