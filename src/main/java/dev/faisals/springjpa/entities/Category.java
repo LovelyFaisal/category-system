@@ -13,12 +13,16 @@ public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(nullable = false)
-    private String name;
+    private String slug;
 
-//    @ManyToOne(fetch = FetchType.LAZY)
+    @Column()
+    private String nameAr;
+
+    @Column()
+    private String nameEn;
+
     @Column(name = "parent_id")
-    private Long parent;
+    private Long parentId;
 
 }

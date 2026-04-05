@@ -35,16 +35,16 @@ public class CategoryService  {
         Map<Long, CategoryDTO> map = all.stream()
                 .collect(Collectors.toMap(
                         Category::getId,
-                        c -> new CategoryDTO(c.getId(), c.getName(), new ArrayList<>())
+                        c -> new CategoryDTO(c.getId(), c.getNameAr(),c.getNameEn(), c.getSlug(), new ArrayList<>())
                 ));
 
         List<CategoryDTO> roots = new ArrayList<>();
 
         for (Category c : all) {
-            if (c.getParent() == null) {
+            if (c.getParentId() == null) {
                 roots.add(map.get(c.getId()));
             } else {
-                map.get(c.getParent())
+                map.get(c.getParentId())
                         .getChildren()
                         .add(map.get(c.getId()));
             }

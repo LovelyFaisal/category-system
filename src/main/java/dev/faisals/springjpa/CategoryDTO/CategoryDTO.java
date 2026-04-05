@@ -9,6 +9,8 @@ import java.util.List;
 @AllArgsConstructor
 public class CategoryDTO {
     private Long id;
-    private String name;
+    private String nameAr;
+    private String nameEn;
+    private String slug;
     private List<CategoryDTO> children;
 }
