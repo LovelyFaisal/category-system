@@ -22,6 +22,9 @@ public class Category {
     @Column()
     private String nameEn;
 
+    @Column(name = "sort_order")
+    private Integer sortOrder = 0;
+
     @Column(name = "parent_id")
     private Long parentId;
 

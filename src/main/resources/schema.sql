@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS categories (
     slug VARCHAR(255) NOT NULL UNIQUE,
     name_ar VARCHAR(255) NOT NULL,
     name_en VARCHAR(255) NOT NULL,
+    sort_order INT DEFAULT 0,
     parent_id BIGINT NULL,
     PRIMARY KEY (id),
     FOREIGN KEY (parent_id) REFERENCES categories(id) ON DELETE CASCADE
@@ -12,6 +13,7 @@ CREATE TABLE IF NOT EXISTS categories (
 
 use test;
 
+SELECT * FROM categories;
 
 INSERT INTO categories (slug, name_ar, name_en, parent_id) VALUES
 ('electronics', 'إلكترونيات', 'Electronics', NULL);
@@ -25,10 +27,10 @@ INSERT INTO categories (slug, name_ar, name_en, parent_id) VALUES
 ('dell',      'ديل',     'Dell',      3);
 
 
-SELECT * FROM categories;
+SELECT * FROM categories ORDER BY sort_order ASC, parent_id ASC;
 
 
 
 
 INSERT INTO categories (slug, name_ar, name_en, parent_id) VALUES
-    ('iphonepromax', 'ايفون برو ماكس', 'iphone pro max', 4);
+    ('iphonepromax', 'ايفون برو ماكس', 'iphone pro max', 2);

@@ -5,6 +5,7 @@ import dev.faisals.springjpa.repositories.CategoryRepo;
 import dev.faisals.springjpa.entities.Category;
 import org.jspecify.annotations.NonNull;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -22,7 +23,7 @@ public class CategoryService  {
     CategoryRepo repo;
 
     public List<CategoryDTO> getFullTree() {
-        List<Category> list = repo.findAll();
+        List<Category> list = repo.findAll(Sort.by(Sort.Direction.ASC, "parentId", "sortOrder"));
         return getTree(list);
     }
 
