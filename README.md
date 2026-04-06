@@ -6,17 +6,16 @@ This project implements a high-performance hierarchical category system using th
 ## Overview
 Categories can have a parent category, forming a tree hierarchy:
 
-```
-Electronics
-├── Phones
-│   ├── iPhone Pro Max
-│   └── Samsung Galaxy
-└── Laptops
-    └── MacBook Pro
-```
 
-<img src="./assets/frontend.png" alt="Project Screenshot">
-
+```mermaid
+graph TD 
+    Electronics --> Mobiles
+    Electronics --> Computers
+    Mobiles --> Iphone
+    Mobiles --> Samsung
+    Computers --> MacBook
+    Computers --> Dell
+```
 
 ##  Features
 
