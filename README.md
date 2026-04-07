@@ -3,6 +3,11 @@
 This project implements a high-performance hierarchical category system using the Adjacency List pattern. It is designed to handle nested categories (Parents > Children) efficiently within a Spring Boot and Hibernate environment.
 
 
+
+You can render the tree on the front end using the Depth-First Search traversal algorithm via recursion.
+
+Here is an example: [Mega menu](https://github.com/LovelyFaisal/megamenu/)
+
 ## Overview
 Categories can have a parent category, forming a tree hierarchy:
 
