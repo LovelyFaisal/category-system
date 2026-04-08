@@ -46,16 +46,15 @@ public class CategoryService {
         List<CategoryDTO> roots = new ArrayList<>();
 
         for (Category c : all) {
+            CategoryDTO dto = map.get(c.getId());
             if (c.getParentId() == null) {
-                roots.add(map.get(c.getId()));
+                roots.add(dto);
             } else {
                 CategoryDTO parent = map.get(c.getParentId());
-                if (parent == null) {
-                    roots.add(map.get(c.getId()));
+                if (parent != null) {
+                    parent.getChildren().add(dto);
                 } else {
-                    map.get(c.getParentId())
-                            .getChildren()
-                            .add(map.get(c.getId()));
+                    roots.add(map.get(c.getId()));
                 }
             }
         }
