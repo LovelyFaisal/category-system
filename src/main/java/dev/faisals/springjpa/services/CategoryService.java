@@ -17,7 +17,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service
-public class CategoryService  {
+public class CategoryService {
 
     @Autowired
     CategoryRepo repo;
@@ -28,15 +28,19 @@ public class CategoryService  {
     }
 
     public List<CategoryDTO> getSubTree(Long targetId) {
-        return getTree(repo.findSubTree(targetId));
+        List<Category> list = repo.findSubTree(targetId);
+        Category category = list.get(0);
+        CategoryDTO dto = new CategoryDTO(category.getId(), category.getNameAr(), category.getNameEn(), category.getSlug(), new ArrayList<>());
+        List<CategoryDTO> listt = new ArrayList<>();
+        listt.add(dto);
+        return getTree(list);
     }
-
 
     public List<CategoryDTO> getTree(@NonNull List<Category> all) {
         Map<Long, CategoryDTO> map = all.stream()
                 .collect(Collectors.toMap(
                         Category::getId,
-                        c -> new CategoryDTO(c.getId(), c.getNameAr(),c.getNameEn(), c.getSlug(), new ArrayList<>())
+                        c -> new CategoryDTO(c.getId(), c.getNameAr(), c.getNameEn(), c.getSlug(), new ArrayList<>())
                 ));
 
         List<CategoryDTO> roots = new ArrayList<>();
@@ -45,12 +49,16 @@ public class CategoryService  {
             if (c.getParentId() == null) {
                 roots.add(map.get(c.getId()));
             } else {
-                map.get(c.getParentId())
-                        .getChildren()
-                        .add(map.get(c.getId()));
+                CategoryDTO parent = map.get(c.getParentId());
+                if (parent == null) {
+                    roots.add(map.get(c.getId()));
+                } else {
+                    map.get(c.getParentId())
+                            .getChildren()
+                            .add(map.get(c.getId()));
+                }
             }
         }
-
         return roots;
     }
 

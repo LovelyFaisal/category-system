@@ -27,4 +27,9 @@ public class CategoryController {
     public Category addCategory(@RequestBody Category category) {
         return service.addCategory(category);
     }
+
+    @PatchMapping("/categories/{id}")
+    public Category updateCategory(@RequestBody Category category) {
+        return service.addCategory(category);
+    }
 }
